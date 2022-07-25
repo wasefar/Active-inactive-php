@@ -1,0 +1,50 @@
+Controler :
+
+$d_news = array(                
+                'status'        => $this->input->post('status'),
+            );
+
+
+View admin :
+
+<div class="form-group">
+          <label class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-10">
+            <select name="status" id="" class="form-control">
+              <option <?= ($recent_project['0']['status'] == 0)?'selected':'' ?> value="0">In Active</option>
+              <option <?= ($recent_project['0']['status'] == 1)?'selected':'' ?> value="1">Active</option>
+            </select>
+          </div>
+        </div>
+
+
+if / else show active button :
+
+                 <td>
+                    <?php if($row['status']){?>
+                      <span class="label label-success">Active</span>
+                    <?php }else{?>
+                      <span class="label label-danger">In Active</span>
+                    <?php }?>
+                  </td>
+
+
+front end show website :
+
+<?php foreach($protflolio as $row):?>
+
+                    <?php if($row['status'] == '1'){?>
+                      
+                        <a href="<?php echo base_url('portfolio/details/' . $row['slug']);?>">
+                            <div class="single-protfolio-item mix category-1 fix" data-my-order="1">
+                              <img src="<?php echo base_url($row['thumb']);?>">
+                               <div class="protfolio-text">
+                                  <h3><?php echo $row['title'];?></h3>
+                              </div>
+                          </div>
+                        </a>
+
+                    <?php }else{?>
+                    <?php }?>
+
+                <?php endforeach;?>
